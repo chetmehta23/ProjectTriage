@@ -4,14 +4,16 @@
     "firstName": "John",
     "lastName": "Dennis",
     "dob": "1990-12-03",
-    "sexAtBirth": "M"
+    "sexAtBirth": "M",
+    "priority: High"
   },
   {
     "patientGuid": "2",
     "firstName": "Matt",
     "lastName": "Murphy",
     "dob": "1985-11-04",
-    "sexAtBirth": "M"
+    "sexAtBirth": "M",
+    "priority": "Low"
   },
   {
     "patientGuid": "3",
@@ -19,5 +21,6 @@
     "lastName": "Jonas",
     "dob": "1995-06-09",
     "sexAtBirth": "M"
+    "priority": "Medium"
   }
 ]
