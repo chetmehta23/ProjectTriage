@@ -31,6 +31,31 @@
     <div class="row">
       <div id="mainContent" class="col-md">
         Main content goes here.
+        <div id="patientWaitingForm" class="col-md">
+          <form>
+            <table>
+              <thead>
+                <th>First</th>
+                <th>Last</th>
+                <th>Gender</th>
+                <th>DOB</th>
+              </thead>
+              <tbody>
+                <tr v-for="p in patients">
+                  <td>{{p.firstName}}</td>
+                  <td>{{p.lastName}}</td>
+                  <td>{{p.sexAtBirth}}</td>
+                  <td>{{p.dob}}</td>
+                </tr>
+              </tbody>
+          </table>
+          </form>
+        </div>
+        <div id="patientTriageApp">
+          <form>
+          </form>
+        </div>
+
       </div>
       <div id="patientWaitingApp" class="col-md-3 queueView">
         <div class="patient patientWaiting" :class="patient.priority + 'Priority'" v-for="patient in patients">
@@ -43,6 +68,7 @@
     </div>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/waitingForm.js"></script>
 <script src="js/waitingapp.js"></script>
 </body>
 </html>
