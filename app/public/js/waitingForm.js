@@ -2,40 +2,42 @@
 var waitingForm = new Vue({
   el: '#patientWaitingForm',
   data: {
-    patients: [
-      {
-        "patientGuid": "SOME-REALLY-LONG-1234",
-        "firstName": "Sylvia",
-        "lastName": "Hernandez",
-        "dob": "2012-09-01",
-        "sexAtBirth": "F",
-        "priority": "High"
-      },
-      {
-        "patientGuid": "SOME-REALLY-SHORT-5678",
-        "firstName": "Vish",
-        "lastName": "Balasubramanian",
-        "dob": "1950-12-15",
-        "sexAtBirth": "M",
-        "priority": "Low"
-      },
-      {
-        "patientGuid": "SOME-UNIQUE-ABCDE1",
-        "firstName": "John",
-        "lastName": "Doe",
-        "dob": "1997",
-        "sexAtBirth": "M",
-        "priority": "Medium"
-      }
-    ]
+    patients: [],
+    formPatient:{
+      firstName: '',
+      lastName: '',
+      dob: '',
+      sexAtBirth: ''
+    }
   },
   methods: {
     fetchPatients(){
-      fetch('patients')
+      fetch('patientdata.php')
       .then(response => response.json())
-      .then(json => {waitingApp.patient = json[0]});
-    }
+      .then(json => {waitingForm.patients = json})
+    },
+
+    handleCreateRecord(event){
+      //TODO: POST the form contents somewhere
+      //fetch(url, {method:"POST", data: this.formPatient})
+      //.then ...
+      this.patients.push(this.formPatient);
+      this.formPatient = {
+        firstName: '',
+        lastName: '',
+        dob: '',
+        sexAtBirth: ''
+      }
   },
+  
+  selectRecord(patient) {
+    console.log(patient)
+  }
+},
+
+
+
+
   created() {
     this.fetchPatients();
   }
