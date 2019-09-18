@@ -30,22 +30,43 @@
   <div class="container">
     <div class="row">
       <div id="mainContent" class="col-md">
-        Main content goes here.
         <div id="patientWaitingForm" class="col-md">
+          <form @submit.prevent="handleCreateRecord">
           <form>
-            <table>
+            <div class="form-group">
+              <label for="recordFirstName">First Name</label>
+              <input type="text" class="form-control" id="recordFirstName" v-model = "formPatient.firstName">
+            </div>
+            <div class="form-group">
+              <label for="recordLastName">Last Name</label>
+              <input type="text" class="form-control" id="recordLastName" v-model = "formPatient.lastName">
+            </div>
+            <div class="form-group">
+              <label for="recordDob">DOB</label>
+              <input type="date" class="form-control" id="recordDob" v-model = "formPatient.dob">
+            </div>
+            <div class="form-group">
+              <label for="recordsexAtBirth">Sex at Birth</label>
+              <input type="text" class="form-control" id="recordSexAtBirth" v-model = "formPatient.sexAtBirth">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+          <form>
+            <table class="table table-sm table-hover">
               <thead>
                 <th>First</th>
                 <th>Last</th>
-                <th>Gender</th>
                 <th>DOB</th>
+                <th>Gender</th>
               </thead>
               <tbody>
-                <tr v-for="p in patients">
+                <tr v-for="p in patients" @click ="selectRecord(p)">
                   <td>{{p.firstName}}</td>
                   <td>{{p.lastName}}</td>
-                  <td>{{p.sexAtBirth}}</td>
                   <td>{{p.dob}}</td>
+                  <td>{{p.sexAtBirth}}</td>
                 </tr>
               </tbody>
           </table>
@@ -55,6 +76,9 @@
           <form>
           </form>
         </div>
+
+
+
 
       </div>
       <div id="patientWaitingApp" class="col-md-3 queueView">

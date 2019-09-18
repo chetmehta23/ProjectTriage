@@ -1,6 +1,26 @@
 var waitingApp = new Vue({
   el: '#patientWaitingApp',
   data: {
+    patients: []
+  },
+  methods: {
+    fetchPatients(){
+      fetch('patientdata.php')
+      .then(response => response.json())
+      .then(json => {waitingApp.patients = json})
+    }
+  },
+  created() {
+    this.fetchPatients();
+  }
+});
+<<<<<<< HEAD
+=======
+
+
+/*var waitingForm = new Vue({
+  el: '#patientWaitingForm',
+  data: {
     patients: [
       {
         "patientGuid": "SOME-REALLY-LONG-1234",
@@ -39,3 +59,5 @@ var waitingApp = new Vue({
     this.fetchPatients();
   }
 });
+*/
+>>>>>>> 9/18/19
